@@ -21,7 +21,7 @@ Useful for people who want to show their partners, sponsors, or as a showcase of
 
 *Include the CSS file*
 
-```
+```html
 <link rel="stylesheet" type="text/css" href="css/portfolio.css" />
 ```
 
@@ -30,27 +30,29 @@ Useful for people who want to show their partners, sponsors, or as a showcase of
 Do not forget to load jQuery before calling the Portfolio script.
 The recommended way to include jQuery is to include it from a CDN:
 
-```
+```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 ```
 
-*Include the JavaScript code*
-
-```
+*Include the JavaScript file*
+```html
 <script src="js/portfolio.js"></script>
-<script>
+```
+
+*Edit your JavaScript code*
+
+```JavaScript
 $(document).ready(function () {
     var options = {
         buttonText: "Voir le site"
     };
     $('.portfolio').portfolio(options);
 });
-</script>
 ```
 
 *Edit your HTML code*
 
-```
+```html
 <div class="portfolio">
     <div class="card_container">
         <div class="card" data-title="Titre" data-link="http://www.site.com" data-tags="tag 1, tag 2">
@@ -70,9 +72,9 @@ $(document).ready(function () {
 
 | parameter | type | default | value(s) | description |
 | ----------|------|---------|----------|-------------|
-| event | string | "click" | event: "click" / "hover" | The mouse event which trigger the effect |
-| effect | string | "slide" | effect: "slide" / "flip" / "fade" | The way the data corresponding to the image will be displayed |
-| button | string | "Click here" | button: "your_text_here" | The link label |
+| event | string | "click" | "click", "hover" | The mouse event which trigger the effect |
+| effect | string | "slide" | "slide", "flip", "fade" | The way the data corresponding to the image will be displayed |
+| button | string | "Click here" | "whatever you want" | The link button text |
 
 **Next steps**
 
@@ -81,4 +83,4 @@ $(document).ready(function () {
 
 **License**
 
-[MIT license][LICENSE]
+MIT LICENSE
