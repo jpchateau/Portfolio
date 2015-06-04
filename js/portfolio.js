@@ -13,36 +13,36 @@
         var PortfolioEffects = {
             effects: {
                 slideOpen: function ($item) {
-                    debug('slideOpen');
                     if ('block' !== $item.find('.overlay').css('display')) {
                         $item.find('.overlay').slideDown('fast');
                     }
                 },
                 slideClose: function ($item) {
-                    debug('slideClose');
                     if ('block' === $item.find('.overlay').css('display')) {
                         $item.find('.overlay').slideUp('fast');
                     }
                 }
             },
-            bindEvent: function ($element, effect, event) {
+            bindEvent: function ($item, effect, event) {
                 switch (effect) {
                 case 'slide':
                     if ('click' === event) {
-                        $element.bind('click', function () {
+                        $item.bind('click', function () {
                             PortfolioEffects.effects.slide($(this));
                         });
                     }
                     if ('hover' === event) {
-                        $element.bind('mouseenter', function () {
+                        $item.bind('mouseenter', function () {
                             PortfolioEffects.effects.slideOpen($(this));
                         });
-                        $element.bind('mouseleave', function () {
+                        $item.bind('mouseleave', function () {
                             PortfolioEffects.effects.slideClose($(this));
                         });
                     }
                     break;
                 }
+
+                debug($item.attr('data-title') + ' effect bound');
             }
         };
 
@@ -140,18 +140,12 @@
                 debug('width and height processed');
 
                 createItemOverlay($(this));
-            });
-        };
-
-        var bindEvents = function ($portfolioElement) {
-            $portfolioElement.find('.card').each(function () {
                 PortfolioEffects.bindEvent($(this), settings.effect, settings.event);
             });
         };
 
         return this.each(function () {
             buildOverlays($(this));
-            bindEvents($(this));
         });
     };
 }(jQuery));
