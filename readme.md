@@ -1,11 +1,11 @@
-Portfolio
-=========
+# Portfolio
 
-**Description**
+[![Code Climate](https://codeclimate.com/github/jpchateau/Portfolio/badges/gpa.svg)](https://codeclimate.com/github/jpchateau/Portfolio)
+![license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)
 
-Portfolio is a jQuery plugin which displays a simple portfolio.
+*Portfolio is a jQuery plugin which displays a simple portfolio.
 Link the images you want to highlight on your website with information and tags.
-Useful for people who want to show their partners, sponsors, or as a showcase of web developments.
+Useful for people who want to show their partners, sponsors, or as a showcase of web developments.*
 
 **Features**
 

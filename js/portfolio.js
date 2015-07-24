@@ -1,11 +1,11 @@
 /**
-* Portfolio jQuery plug-in
-*
-* @author Jean-Philippe Chateau <contact@jpchateau.com>
-* @version 1.0.0
-* @license MIT http://opensource.org/licenses/MIT
-* @date 2015-06-04
-*/
+ * Portfolio jQuery plug-in
+ *
+ * @author Jean-Philippe Chateau <contact@jpchateau.com>
+ * @version 0.3.0
+ * @date 2015-07-23
+ * @license MIT http://opensource.org/licenses/MIT
+ */
 (function ($) {
     'use strict';
 
@@ -25,21 +25,21 @@
             },
             bindEvent: function ($item, effect, event) {
                 switch (effect) {
-                case 'slide':
-                    if ('click' === event) {
-                        $item.bind('click', function () {
-                            PortfolioEffects.effects.slide($(this));
-                        });
-                    }
-                    if ('hover' === event) {
-                        $item.bind('mouseenter', function () {
-                            PortfolioEffects.effects.slideOpen($(this));
-                        });
-                        $item.bind('mouseleave', function () {
-                            PortfolioEffects.effects.slideClose($(this));
-                        });
-                    }
-                    break;
+                    case 'slide':
+                        if ('click' === event) {
+                            $item.bind('click', function () {
+                                PortfolioEffects.effects.slide($(this));
+                            });
+                        }
+                        if ('hover' === event) {
+                            $item.bind('mouseenter', function () {
+                                PortfolioEffects.effects.slideOpen($(this));
+                            });
+                            $item.bind('mouseleave', function () {
+                                PortfolioEffects.effects.slideClose($(this));
+                            });
+                        }
+                        break;
                 }
 
                 debug($item.attr('data-title') + ' effect bound');
@@ -100,13 +100,11 @@
                 tags = $item.attr('data-tags').split(',');
             }
             for (i in tags) {
-                if (tags.hasOwnProperty(i)) {
-                    tag = document.createTextNode(tags[i].trim());
-                    tagElement = document.createElement('span');
-                    tagElement.style.display = 'inline-block';
-                    tagElement.appendChild(tag);
-                    tagsContainerElement.appendChild(tagElement);
-                }
+                tag = document.createTextNode(tags[i].trim());
+                tagElement = document.createElement('span');
+                tagElement.style.display = 'inline-block';
+                tagElement.appendChild(tag);
+                tagsContainerElement.appendChild(tagElement);
             }
 
             // Link
@@ -120,8 +118,8 @@
 
             // Overlay
             var overlay = document.createElement('div');
-            overlay.style.width = $item.find('img').width() + 'px';
-            overlay.style.height = $item.find('img').height() + 'px';
+            overlay.style.width = $item.find('img').attr('width') + 'px';
+            overlay.style.height = $item.find('img').attr('height') + 'px';
             overlay.setAttribute('class', 'overlay');
 
             overlay.appendChild(titleElement);
@@ -135,10 +133,6 @@
 
         var buildOverlays = function ($portfolioElement) {
             $portfolioElement.find('.card').each(function () {
-                $(this).parent().css('width', $(this).find('img').width() + 'px');
-                $(this).parent().css('height', $(this).find('img').height() + 'px');
-                debug('width and height processed');
-
                 createItemOverlay($(this));
                 PortfolioEffects.bindEvent($(this), settings.effect, settings.event);
             });
